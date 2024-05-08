@@ -1,0 +1,86 @@
+
+selection-menu:
+  title: "Выберите предмет"
+  size: 27
+  items:
+    fill-item:
+      material: ORANGE_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      slots:
+        - "0-10"
+        - "16-26"
+    empty-item:
+      material: STRUCTURE_VOID
+      name: "Нет предмета"
+      lore:
+        - "Вооружитесь бронёй или инструментом"
+        - "Для того чтобы улучшить его"
+      slots:
+        - "11-15"
+  equipments:
+    hand-slot: 11
+    helmet-slot: 12
+    chest-slot: 13
+    legs-slot: 14
+    boots-slot: 15
+    available-materials:
+      - "DIAMOND_HELMET"
+
+
+upgrade-menu:
+  title: "Выберите улучшение"
+  size: 27
+  items:
+    fill-item:
+      material: ORANGE_STAINED_GLASS_PANE
+      name: " "
+      lore: []
+      slots:
+        - "0-12"
+        - "14-26"
+  upgrades:
+    upgrade1:
+      slot: 13
+      item:
+        material: GLISTERING_MELON_SLICE
+        name: "Улучшение: %level-name%"
+        lore:
+          - "%level-lore%"
+          - "Цена: %price-vault% %price-player-points%"
+      item-max-level:
+        material: GLISTERING_MELON_SLICE
+        name: "Улучшение максимального уровня!"
+        lore: []
+      levels:
+        # Число не влияет на порядок уровней, влияет порядок в конфиге сверху - вниз
+        1:
+          # Цена за уровень улучшения, поддержка PlayerPoints и Vault
+          price:
+            vault: 10
+            player-points: 10
+          # Действия по отношению к предмету, который игрок выбрал
+          actions:
+            # Добавляет один уровень зачарования прочности
+            - "enchant add unbreaking 1"
+            # Устанавливает четвертый уровень зачарования защиты
+            - "enchant set protection 4"
+            # Удаляет один уровень зачарования проклятье несъёмности
+            - "enchant remove vanishing_curse 1"
+          # Те условия, при выполнении которых определяется, что предмет уже прокачен
+          performance-conditions:
+            - "enchant has unbreaking 1"
+            - "enchant has protection 4"
+          lore: []
+          name: "I"
+      available-materials:
+        - "DIAMOND_HELMET"
+
+messages:
+  no-permissions: "Недостаточно прав!"
+  command-reload-help: "/equipmentupgrade reload"
+  command-reload-success: "Плагин перезагружен! (%msms)"
+  level-buy-no-player-points: "Недостаточно поинтов! Стоимость: %need-points%, Нужно: %remainder-points%, Ваше поинтов: %points%"
+  level-buy-no-money: "Недостаточно монет! Стоимость: %need-moneys%, Нужно: %remainder-moneys%, Ваше поинтов: %moneys%"
+  invalid-select-item: "Выбранный предмет недействительный! Повторите попытку"
+  level-buy-success: "Вы успешно купили апгрейд!"

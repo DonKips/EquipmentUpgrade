@@ -1,0 +1,10 @@
+name: EquipmentUpgrade
+version: '${project.version}'
+main: me.looks.equipmentupgrade.EquipmentUpgrade
+api-version: '1.16'
+authors: [Looks]
+softdepend:
+  - Vault
+  - PlayerPoints
+commands:
+  equipmentupgrade: {}
